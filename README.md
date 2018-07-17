@@ -1,19 +1,35 @@
-# github-calendar-graph-crawler
-Get the contributon calendar graph on GitHub personal page.  
+# github-calendar-graph
+Get the GitHub contributon calendar graph.  
   
 ## Demo
-GET `/graph/:account`  
-response `text/html`  
-![graph](https://i.imgur.com/Czee71O.png)  
+Append the calendar graph as you see at GitHub to everywhere you want.  
+![demo](https://i.imgur.com/14y9I9O.png)  
   
-GET `/data/:account`  
-response `application/json`  
-![json](https://i.imgur.com/BIihkaC.png)  
+## Install
+```
+$ npm install github-calendar-graph --save
+```
   
-## Installation
-1. `git clone https://github.com/x3388638/github-calendar-graph-crawler.git`
-2. `cd github-calendar-graph-crawler`
-3. `npm install`
-4. `npm start`
-5. http://localhost:7774/graph/x3388638
-6. http://localhost:7774/data/x3388638
+## Usage
+```javascript
+const CalendarGraph = require('github-calendar-graph');
+
+// get contribution graph
+CalendarGraph.fetch('GITHUB ACCOUNT').then((data) => {
+    console.log(data); // => string of HTML DOM
+});
+
+// get contribution count
+CalendarGraph.fetch('GITHUB ACCOUNT', true).then((data) => {
+    console.log(data); // => { 'DATE': 'CONTRIBUTION COUNT' }
+    /*
+    {
+        '2018-07-01': 3,
+        '2018-07-02': 1,
+        '2018-07-03': 9,
+        ...
+    }
+    */
+});
+
+```
