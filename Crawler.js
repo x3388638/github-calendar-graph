@@ -13,14 +13,19 @@ function fetch(account, raw) {
 		});
 	}).then((document) => {
 		const $ = cheerio.load(document);
+		const $calendar = $('.calendar-graph');
 		if (raw) {
-			// TODO: parse DOM to data
-			return Promise.resolve({
-				'2018-07-17': 4
+			const result = {};
+			$calendar.find('svg > g > g').each((i, week) => {
+				$(week).find('rect').each((i, day) => {
+					result[$(day).data('date')] = $(day).data('count');
+				});
 			});
+
+			return Promise.resolve(result);
 		}
 
-		const $container = $(`<div></div>`).append($('.calendar-graph'));
+		const $container = $(`<div></div>`).append($calendar);
 		const graph = `<div>
 			<style>
 				.calendar-graph text.month { font-size: 10px; fill: #767676; }

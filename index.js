@@ -17,6 +17,13 @@ app.get('/graph/:account', cors(), (req, res) => {
 	});
 });
 
+app.get('/data/:account', cors(), (req, res) => {
+	const { account } = req.params;
+	Crawler.fetch(account, true).then((data) => {
+		res.json(data)
+	});
+});
+
 http.listen(7774, function () {
 	console.log('listening on 127.0.0.1:7774');
 });
