@@ -1,13 +1,17 @@
 {
-  "name": "github-calendar-graph-crawler",
-  "version": "1.0.0",
-  "description": "",
+  "name": "github-calendar-graph",
+  "version": "0.1.0",
+  "description": "Get GitHub contribution calendar graph",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Y.Y. Chang",
+  "license": "MIT",
+  "repository": {
+    "url": "git@github.com:x3388638/github-calendar-graph.git",
+    "type": "git"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",

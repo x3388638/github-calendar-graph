@@ -1,29 +1,41 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const Crawler = require('./Crawler');
+const request = require('request');
+const cheerio = require('cheerio');
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-// parse application/json
-app.use(bodyParser.json());
+function fetch(account, raw) {
+	return new Promise((resolve, reject) => {
+		request.get(`https://github.com/${ account }`, (err, res, body) => {
+			if (err) {
+				reject(err);
+				return;
+			}
 
-app.get('/graph/:account', cors(), (req, res) => {
-	const { account } = req.params;
-	Crawler.fetch(account).then((graph) => {
-		res.send(graph);
+			resolve(body);
+		});
+	}).then((document) => {
+		const $ = cheerio.load(document);
+		const $calendar = $('.calendar-graph');
+		if (raw) {
+			const result = {};
+			$calendar.find('svg > g > g').each((i, week) => {
+				$(week).find('rect').each((i, day) => {
+					result[$(day).data('date')] = $(day).data('count');
+				});
+			});
+
+			return Promise.resolve(result);
+		}
+
+		const $container = $(`<div></div>`).append($calendar);
+		const graph = `<div>
+			<style>
+				.calendar-graph text.month { font-size: 10px; fill: #767676; }
+				.calendar-graph text.wday { font-size: 9px; fill: #767676; }
+			</style>
+			${ $container.html() }
+		`;
+
+		return Promise.resolve(graph);
 	});
-});
+}
 
-app.get('/data/:account', cors(), (req, res) => {
-	const { account } = req.params;
-	Crawler.fetch(account, true).then((data) => {
-		res.json(data)
-	});
-});
-
-http.listen(7774, function () {
-	console.log('listening on 127.0.0.1:7774');
-});
+module.exports = { fetch };
