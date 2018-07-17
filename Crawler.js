@@ -20,7 +20,16 @@ function fetch(account, raw) {
 			});
 		}
 
-		return Promise.resolve($('.calendar-graph').html());
+		const $container = $(`<div></div>`).append($('.calendar-graph'));
+		const graph = `<div>
+			<style>
+				.calendar-graph text.month { font-size: 10px; fill: #767676; }
+				.calendar-graph text.wday { font-size: 9px; fill: #767676; }
+			</style>
+			${ $container.html() }
+		`;
+
+		return Promise.resolve(graph);
 	});
 }
 
