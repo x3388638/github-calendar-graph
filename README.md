@@ -1,4 +1,4 @@
-# github-calendar-graph
+# github-calendar-graph [![npm version](https://badge.fury.io/js/github-calendar-graph.svg)](https://badge.fury.io/js/github-calendar-graph)
 Get the GitHub contributon calendar graph.  
   
 ## Demo
