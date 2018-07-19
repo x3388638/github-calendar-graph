@@ -1,5 +1,6 @@
 # github-calendar-graph [![npm version](https://badge.fury.io/js/github-calendar-graph.svg)](https://badge.fury.io/js/github-calendar-graph)
 Get the GitHub contributon calendar graph.  
+![calendar-graph](https://i.imgur.com/QRlsnnv.png)
   
 ## Demo
 Append the calendar graph as you see at GitHub to everywhere you want.  
