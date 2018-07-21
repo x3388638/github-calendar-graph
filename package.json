@@ -10,9 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "request": "^2.87.0"
+    "github-calendar-graph": "^0.2.0"
   }
 }
