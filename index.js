@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/graph/:account', cors(), (req, res) => {
 	const { account } = req.params;
+	console.log(`${ new Date } :: get ${ account } for grsph.`)
 	CalendarGraph.fetch(account).then((graph) => {
 		res.send(graph);
 	});
@@ -19,6 +20,7 @@ app.get('/graph/:account', cors(), (req, res) => {
 
 app.get('/data/:account', cors(), (req, res) => {
 	const { account } = req.params;
+	console.log(`${ new Date } :: get ${ account } for data.`)
 	CalendarGraph.fetch(account, true).then((data) => {
 		res.json(data)
 	});
