@@ -1,4 +1,4 @@
-# github-calendar-graph [![npm version](https://badge.fury.io/js/github-calendar-graph.svg)](https://badge.fury.io/js/github-calendar-graph)
+# github-calendar-graph [![npm version](https://badge.fury.io/js/github-calendar-graph.svg)](https://badge.fury.io/js/github-calendar-graph) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)  
 Get the GitHub contributon calendar graph.  
 ![calendar-graph](https://i.imgur.com/QRlsnnv.png)
   
