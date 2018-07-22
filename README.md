@@ -4,7 +4,7 @@ Get the GitHub contributon calendar graph.
   
 ## Demo
 Append the calendar graph as you see at GitHub to everywhere you want.  
-![demo](https://i.imgur.com/14y9I9O.png)  
+![demo](https://i.imgur.com/GuEyCIJ.jpg)  
   
 ## Install
 ```
