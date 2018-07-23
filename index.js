@@ -15,12 +15,13 @@ function fetch(account, raw) {
 		const $ = cheerio.load(document);
 		const $calendar = $('.js-calendar-graph-svg');
 		if (raw) {
-			const result = {};
-			$calendar.find('g > g > rect').each((i, day) => {
-				result[$(day).data('date')] = $(day).data('count');
-			});
-
-			return Promise.resolve(result);
+			return Promise.resolve(
+				$calendar.find('g > g > rect').toArray().reduce((result, day) => {
+					return Object.assign(result, {
+						[$(day).data('date')]: $(day).data('count')
+					});
+				}, {})
+			);
 		}
 
 		const $container = $(`<div></div>`).append($calendar);
