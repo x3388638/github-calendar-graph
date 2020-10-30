@@ -1,5 +1,5 @@
-const request = require("request");
-const cheerio = require("cheerio");
+const request = require('request')
+const cheerio = require('cheerio')
 
 function fetch(account, raw, withColor) {
   return new Promise((resolve, reject) => {
@@ -7,35 +7,35 @@ function fetch(account, raw, withColor) {
       `https://github.com/users/${account}/contributions`,
       (err, res, body) => {
         if (err) {
-          reject(err);
-          return;
+          reject(err)
+          return
         }
 
-        resolve(body);
+        resolve(body)
       }
-    );
+    )
   }).then((document) => {
-    const $ = cheerio.load(document);
-    const $calendar = $(".js-calendar-graph-svg");
+    const $ = cheerio.load(document)
+    const $calendar = $('.js-calendar-graph-svg')
     if (raw) {
       return Promise.resolve(
         $calendar
-          .find("g > g > rect")
+          .find('g > g > rect')
           .toArray()
           .reduce((result, day) => {
             return Object.assign(result, {
-              [$(day).data("date")]: withColor
+              [$(day).data('date')]: withColor
                 ? {
-                    count: $(day).data("count"),
-                    color: $(day).attr("fill"),
+                    count: $(day).data('count'),
+                    color: $(day).attr('fill')
                   }
-                : $(day).data("count"),
-            });
+                : $(day).data('count')
+            })
           }, {})
-      );
+      )
     }
 
-    const $container = $(`<div></div>`).append($calendar);
+    const $container = $(`<div></div>`).append($calendar)
     const graph = `
 			<div>
         <style>
@@ -47,10 +47,10 @@ function fetch(account, raw, withColor) {
 				</style>
 				${$container.html()}
 			</div>
-		`;
+		`
 
-    return Promise.resolve(graph);
-  });
+    return Promise.resolve(graph)
+  })
 }
 
-module.exports = { fetch };
+module.exports = { fetch }
