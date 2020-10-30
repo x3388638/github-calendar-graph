@@ -1,0 +1,22 @@
+{
+  "name": "github-calendar-graph-example",
+  "version": "1.0.0",
+  "description": "example for github-calendar-graph",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x3388638/github-calendar-graph.git"
+  },
+  "author": "YY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/x3388638/github-calendar-graph/issues"
+  },
+  "homepage": "https://github.com/x3388638/github-calendar-graph#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
