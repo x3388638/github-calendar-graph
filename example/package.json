@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/x3388638/github-calendar-graph#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
